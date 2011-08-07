@@ -1,17 +1,18 @@
+<input type="hidden" name="map-center" id="map-center" value="<?php echo $this->tweetsCenter?>">
+
 <div id='layout'>
-    <div id='tweets'>
+    <ul id='tweets'>
         <?php foreach ($this->tweetsCollection as $tweet):?>
-            <?php echo $tweet->getCreated()?><br />
-            <?php echo $tweet->getFrom()?><br />
-            <?php echo $tweet->getText()?><br />
+        <li>
+            <label><strong>@<?php echo $tweet->getFrom()?></strong></label> // <?php echo $tweet->getCreated()?>
+            <p><?php echo $tweet->getText()?></p>
             <?php if ($tweet->hasLocation()):?>
-                <?php echo $tweet->getLocation()->getLatitude()?>
-                x
-                <?php echo $tweet->getLocation()->getLongitude()?>
+                <input type="hidden" value="<?php echo $tweet->getLocation()?>">
             <?php endif;?>
             <hr>
+        </li>
         <?php endforeach;?>
-    </div>
+    </ul>
 
     <div id='map'>
     </div>

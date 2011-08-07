@@ -19,6 +19,8 @@
         <modelFile modelName="TweetRepository"/>
         <modelFile modelName="Tweet"/>
         <modelFile modelName="Location"/>
+        <modelFile modelName="TweetSCollection"/>
+        <modelFile modelName="Map"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>

@@ -5,12 +5,35 @@
 }
 #layout #tweets {
     float: left;
+    margin: 0;
+    padding: 0;
     width: 30%;
+    height: 600px;
+    overflow: auto;
+    font-size:12px;
 }
 #layout #map {
     float: right;
     width: 70%;
     height: 600px;
     background-color: green;
+}
+
+#layout #tweets p {
+   background-color:#BDEDFF;
+}
+
+.zend_form {
+    overflow: hidden;
+    height:1%;
+}
+.zend_form dd {
+    float: left;
+}
+.zend_form dt {
+    float: left;
+}
+#text-element input {
+    width: 800px;
 }
 

@@ -3,6 +3,7 @@
 /** @namespace */
 namespace Application\Service\Repository;
 use Application\Service\Factory as Factory;
+use Application\Service\Collection as Collection;
 use Zend\Service\Twitter\Search;
 
 class Tweet
@@ -18,7 +19,7 @@ class Tweet
     {
         $response = $this->_twitter->search($text);
         $factory = new Factory\Tweet;
-        $collection = new \ArrayObject();
+        $collection = new Collection\Collection();
         foreach ($response as $property) {
             if (!is_array($property)) continue;
             foreach ($property as $tweetData) {

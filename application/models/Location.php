@@ -23,5 +23,10 @@ class Location
     {
         return $this->_longitude;
     }
+
+    public function __toString()
+    {
+        return $this->getLatitude() . 'x' . $this->getLongitude();
+    }
 }
 

@@ -24,13 +24,15 @@
 </body>
 </html>
 -->
-<?php foreach ($this->tweets as $property):?>
-    <?php if (!is_array($property)) continue;?>
-    <?php foreach ($property as $tweet):?>
-    <?php echo $tweet->created_at?><br />
-    <?php echo $tweet->from_user?><br />
-    <?php Zend\Debug::dump($tweet->geo)?><br />
-    <?php echo $tweet->text?><br />
-    <?php endforeach;?>
+<?php foreach ($this->tweetsCollection as $tweet):?>
+    <?php echo $tweet->getCreated()?><br />
+    <?php echo $tweet->getFrom()?><br />
+    <?php echo $tweet->getText()?><br />
+    <?php if ($tweet->hasLocation()):?>
+        <?php echo $tweet->getLocation()->getLatitude()?>
+        x
+        <?php echo $tweet->getLocation()->getLongitude()?>
+    <?php endif;?>
+    <hr>
 <?php endforeach;?>
 

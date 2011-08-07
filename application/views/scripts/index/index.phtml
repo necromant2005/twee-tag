@@ -1,8 +1,9 @@
-<input type="hidden" name="map-center" id="map-center" value="<?php echo $this->tweetsCenter?>">
+<input type="hidden" name="map-center" id="map-center" value="<?php echo $this->mapCenter?>">
+<input type="hidden" name="map-zoom" id="map-zoom" value="<?php echo $this->mapZoom?>">
 
 <div id='layout'>
     <ul id='tweets'>
-        <?php foreach ($this->tweetsCollection as $tweet):?>
+        <?php foreach ($this->tweets as $tweet):?>
         <li>
             <label><strong>@<?php echo $tweet->getFrom()?></strong></label> // <?php echo $tweet->getCreated()?>
             <p><?php echo $tweet->getText()?></p>

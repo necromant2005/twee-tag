@@ -11,10 +11,11 @@ class IndexController extends \Zend\Controller\Action
         $this->view->form = $form;
 
         $repository = new Application\Service\Repository\Tweet;
-        $this->view->tweetsCollection = $repository->search($form->text->getValue());
+        $this->view->tweets = $repository->search($form->text->getValue());
 
         $map = new Application\Model\Map;
-        $this->view->tweetsCenter = $map->findCenter($this->view->tweetsCollection);
+        $this->view->mapCenter = $map->findCenter($this->view->tweets);
+        $this->view->mapZoom   = $map->findZoom($this->view->tweets);
     }
 }
 

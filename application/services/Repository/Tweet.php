@@ -20,11 +20,8 @@ class Tweet
         $response = $this->_twitter->search($text);
         $factory = new Factory\Tweet;
         $collection = new Collection\Collection();
-        foreach ($response as $property) {
-            if (!is_array($property)) continue;
-            foreach ($property as $tweetData) {
-                $collection->append($factory->create($tweetData));
-            }
+        foreach ($response->results as $tweetData) {
+            $collection->append($factory->create($tweetData));
         }
         return $collection;
     }

@@ -3,8 +3,9 @@ $(document).ready(function() {
   $('#layout #map').height($(window).height()-100);
   $('#layout #tweets').height($(window).height()-100);
 
+  var zoom = 1*$('#map-zoom').val();
   var myOptions = {
-    zoom: 8,
+    zoom: zoom,
     center: createGLatLng($('#map-center').val()),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }

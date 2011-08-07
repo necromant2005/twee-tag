@@ -1,0 +1,16 @@
+
+#layout {
+    overflow: hidden;
+    height:1%;
+}
+#layout #tweets {
+    float: left;
+    width: 30%;
+}
+#layout #map {
+    float: right;
+    width: 70%;
+    height: 600px;
+    background-color: green;
+}
+

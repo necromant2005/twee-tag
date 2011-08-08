@@ -37,3 +37,14 @@
     width: 800px;
 }
 
+
+#index-center {
+    background-color: #FFFFCC;
+    margin: 200px auto 0;
+    width: 600px;
+    padding: 5px;
+}
+#index-center #text-element input {
+    width: 400px;
+}
+

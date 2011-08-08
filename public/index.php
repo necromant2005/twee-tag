@@ -1,5 +1,5 @@
 <?php
-
+define('APPLICATION_ENV', 'development');
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(__DIR__ . '/../application'));
@@ -24,3 +24,4 @@ $application = new Zend\Application\Application (
 );
 $application->bootstrap()
             ->run();
+

@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  if (!$('#layout #map')) return false;
+
   // height of map window
   $('#layout #map').height($(window).height()-100);
   $('#layout #tweets').height($(window).height()-100);

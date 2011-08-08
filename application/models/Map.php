@@ -40,12 +40,16 @@ class Map
             $longitude+=$tweet->getLocation()->getLongitude();
             $count++;
         }
-        return new Location($latitude/$count, $longitude/$count);
+        if ($count) {
+            return new Location($latitude/$count, $longitude/$count);
+        }
+        return new Location($latitude, $longitude);
     }
 
     public function findZoom(Collection\Collection $tweets)
     {
         $center = $this->findCenter($tweets);
+        if (!$center->getLatitude() && !$center->getLongitude()) return 2;
         $maxDistance = 0;
         foreach ($tweets as $tweet) {
             if (!$tweet->hasLocation()) continue;

@@ -9,14 +9,9 @@ class NoAdv implements Specification
 {
     protected $_collection = array();
 
-    public function __construct()
+    public function __construct(Collection $collection)
     {
-        $this->_collection = new Collection;
-    }
-
-    public function addFrom($username)
-    {
-        $this->_collection->append($username);
+        $this->_collection = $collection;
     }
 
     public function isSatisfiedBy(Tweet $tweet)

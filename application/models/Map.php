@@ -7,36 +7,26 @@ use Application\Service\Collection as Collection;
 
 class Map
 {
+    private $_tweets = null;
+
     private $_zoom = array(
-        19=>0.01,
-        18=>0.02,
-        17=>0.05,
-        16=>0.1,
-        15=>0.2,
-        14=>0.5,
-        13=>1,
-        12=>2,
-        11=>5,
-        10=>10,
-        9=>20,
-        8=>20,
-        7=>50,
-        6=>100,
-        5=>200,
-        4=>500,
-        3=>1000,
-        2=>2000,
-        1=>5000,
+        19=>0.01, 18=>0.02, 17=>0.05, 16=>0.1, 15=>0.2,
+        14=>0.5, 13=>1, 12=>2, 11=>5,
+        10=>10, 9=>15, 8=>25, 7=>50, 6=>100,
+        5=>200, 4=>500, 3=>1000, 2=>2000, 1=>5000,
     );
 
-    public function findCenter(Collection\Collection $tweets)
+    public function __construct(Collection\Collection $tweets)
+    {
+        $this->_tweets = $tweets->filter(new Tweet\Specification\HasLocation);
+    }
+
+    public function getCenter()
     {
         $latitude = 0;
         $longitude = 0;
         $count = 0;
-        foreach ($tweets as $tweet) {
-            $specification = new Tweet\Specification\HasLocation;
-            if (!$specification->isSatisfiedBy($tweet)) continue;
+        foreach ($this->_tweets as $tweet) {
             $latitude+=$tweet->getLocation()->getLatitude();
             $longitude+=$tweet->getLocation()->getLongitude();
             $count++;
@@ -47,14 +37,12 @@ class Map
         return new Location($latitude, $longitude);
     }
 
-    public function findZoom(Collection\Collection $tweets)
+    public function getZoom()
     {
-        $center = $this->findCenter($tweets);
+        $center = $this->getCenter();
         if (!$center->getLatitude() && !$center->getLongitude()) return 2;
         $maxDistance = 0;
-        foreach ($tweets as $tweet) {
-            $specification = new Tweet\Specification\HasLocation;
-            if (!$specification->isSatisfiedBy($tweet)) continue;
+        foreach ($this->_tweets as $tweet) {
             $distance = $this->distance($center, $tweet->getLocation());
             if ($distance>$maxDistance) $maxDistance = $distance;
         }

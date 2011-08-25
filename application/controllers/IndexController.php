@@ -1,6 +1,8 @@
 <?php
-use Application\Model as Model;
+use Application\Model;
 use Application\Service\Repository as Repository;
+use Application\Service\Collection\Collection;
+
 class IndexController extends \Zend\Controller\Action
 {
     public function init()
@@ -15,19 +17,18 @@ class IndexController extends \Zend\Controller\Action
 
     public function searchAction()
     {
-        $this->view->form->isValid($this->_getAllParams());
+        $form = $this->view->form;
+        $form->isValid($this->_getAllParams());
 
-        $specification = new Model\Tweet\Specification\NoAdv;
-        $specification->addFrom('@KievAllAdv');
+        $collection = new Collection(array('KievAllAdv', 'donnerusse'));
+
         $repository = new Repository\Tweet;
         $tweets = $repository
-            ->search($this->view->form->text->getValue())
-            ->filter($specification);
+            ->search($form->text->getValue())
+            ->filter(new Model\Tweet\Specification\NoAdv($collection));
 
-        $map = new Application\Model\Map;
-        $this->view->mapCenter = $map->findCenter($tweets);
-        $this->view->mapZoom   = $map->findZoom($tweets);
-        $this->view->tweets    = $tweets;
+        $this->view->tweets = $tweets;
+        $this->view->map    = new Model\Map($tweets);
     }
 }
 

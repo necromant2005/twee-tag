@@ -1,7 +1,7 @@
 <div><?php echo $this->form?></div>
 
-<input type="hidden" name="map-center" id="map-center" value="<?php echo $this->mapCenter?>">
-<input type="hidden" name="map-zoom" id="map-zoom" value="<?php echo $this->mapZoom?>">
+<input type="hidden" name="map-center" id="map-center" value="<?php echo $this->map->getCenter()?>">
+<input type="hidden" name="map-zoom" id="map-zoom" value="<?php echo $this->map->getZoom()?>">
 
 <div id='layout'>
     <ul id='tweets'>

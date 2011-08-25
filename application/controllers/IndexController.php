@@ -1,5 +1,6 @@
 <?php
-
+use Application\Model as Model;
+use Application\Service\Repository as Repository;
 class IndexController extends \Zend\Controller\Action
 {
     public function init()
@@ -16,12 +17,17 @@ class IndexController extends \Zend\Controller\Action
     {
         $this->view->form->isValid($this->_getAllParams());
 
-        $repository = new Application\Service\Repository\Tweet;
-        $this->view->tweets = $repository->search($this->view->form->text->getValue());
+        $specification = new Model\Tweet\Specification\NoAdv;
+        $specification->addFrom('@KievAllAdv');
+        $repository = new Repository\Tweet;
+        $tweets = $repository
+            ->search($this->view->form->text->getValue())
+            ->filter($specification);
 
         $map = new Application\Model\Map;
-        $this->view->mapCenter = $map->findCenter($this->view->tweets);
-        $this->view->mapZoom   = $map->findZoom($this->view->tweets);
+        $this->view->mapCenter = $map->findCenter($tweets);
+        $this->view->mapZoom   = $map->findZoom($tweets);
+        $this->view->tweets    = $tweets;
     }
 }
 

@@ -35,7 +35,8 @@ class Map
         $longitude = 0;
         $count = 0;
         foreach ($tweets as $tweet) {
-            if (!$tweet->hasLocation()) continue;
+            $specification = new Tweet\Specification\HasLocation;
+            if (!$specification->isSatisfiedBy($tweet)) continue;
             $latitude+=$tweet->getLocation()->getLatitude();
             $longitude+=$tweet->getLocation()->getLongitude();
             $count++;
@@ -52,7 +53,8 @@ class Map
         if (!$center->getLatitude() && !$center->getLongitude()) return 2;
         $maxDistance = 0;
         foreach ($tweets as $tweet) {
-            if (!$tweet->hasLocation()) continue;
+            $specification = new Tweet\Specification\HasLocation;
+            if (!$specification->isSatisfiedBy($tweet)) continue;
             $distance = $this->distance($center, $tweet->getLocation());
             if ($distance>$maxDistance) $maxDistance = $distance;
         }

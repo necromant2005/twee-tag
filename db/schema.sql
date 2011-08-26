@@ -1,0 +1,5 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE spam (username TEXT);
+COMMIT;
+

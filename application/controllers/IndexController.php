@@ -30,5 +30,12 @@ class IndexController extends \Zend\Controller\Action
         $this->view->tweets = $tweets;
         $this->view->map    = new Model\Map($tweets);
     }
+
+    public function spamAction()
+    {
+        $this->view->name = $this->_getParam('name');
+        $repository = new Repository\Spam;
+        $repository->add($this->_getParam('name'));
+    }
 }
 

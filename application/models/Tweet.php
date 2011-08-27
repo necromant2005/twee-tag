@@ -26,7 +26,7 @@ class Tweet
         $this->_text = $text;
     }
 
-    public function setLocation(Location $location)
+    public function setLocation(Location $location=null)
     {
         $this->_location = $location;
     }

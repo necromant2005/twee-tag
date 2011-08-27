@@ -2,6 +2,7 @@
 use Application\Model;
 use Application\Service\Repository as Repository;
 use Application\Service\Collection\Collection;
+use Application\Model\Tweet\Specification as TweetSpecification;
 
 class IndexController extends \Zend\Controller\Action
 {
@@ -20,12 +21,11 @@ class IndexController extends \Zend\Controller\Action
         $form = $this->view->form;
         $form->isValid($this->_getAllParams());
 
-        $collection = new Collection(array('KievAllAdv', 'donnerusse'));
-
-        $repository = new Repository\Tweet;
-        $tweets = $repository
+        $repositorySpam = new Repository\Spam;
+        $repositoryTweet = new Repository\Tweet;
+        $tweets = $repositoryTweet
             ->search($form->text->getValue())
-            ->filter(new Model\Tweet\Specification\NoAdv($collection));
+            ->filter(new TweetSpecification\NoAdv($repositorySpam->getItems()));
 
         $this->view->tweets = $tweets;
         $this->view->map    = new Model\Map($tweets);

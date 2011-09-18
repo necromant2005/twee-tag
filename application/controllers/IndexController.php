@@ -1,7 +1,6 @@
 <?php
 use Application\Model;
-use Application\Service\Repository as Repository;
-use Application\Service\Collection\Collection;
+use Application\Model\Repository as Repository;
 use Application\Model\Tweet\Specification as TweetSpecification;
 
 class IndexController extends \Zend\Controller\Action

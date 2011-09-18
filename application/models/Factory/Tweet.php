@@ -1,5 +1,5 @@
 <?php
-namespace Application\Service\Factory;
+namespace Application\Model\Factory;
 
 use Application\Model as Model;
 

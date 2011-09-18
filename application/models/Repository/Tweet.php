@@ -1,16 +1,16 @@
 <?php
 
 /** @namespace */
-namespace Application\Service\Repository;
-use Application\Service\Factory as Factory;
-use Application\Service\Collection as Collection;
+namespace Application\Model\Repository;
+use Application\Model\Factory as Factory;
+use Platform\Collection as Collection;
 use Zend\Service\Twitter\Search;
 use Zend\Http;
 use Zend\Rest;
 use Zend\Feed;
 use Zend\Json;
 use Application\Model\Location;
-use Application\Service\DbTable;
+use Application\Model\DbTable;
 
 class Tweet
 {

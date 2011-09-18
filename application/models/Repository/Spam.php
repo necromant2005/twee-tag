@@ -1,9 +1,9 @@
 <?php
 
 /** @namespace */
-namespace Application\Service\Repository;
-use Application\Service\DbTable;
-use Application\Service\Collection\Collection;
+namespace Application\Model\Repository;
+use Application\Model\DbTable;
+use Platform\Collection\Collection;
 
 class Spam
 {

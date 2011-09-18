@@ -1,5 +1,5 @@
 <?php
-namespace Application\Service\DbTable;
+namespace Application\Model\DbTable;
 use Zend\Db\Table\Table;
 
 class Spam extends Table

@@ -1,7 +1,7 @@
 <?php
 namespace Application\Model\Tweet\Specification;
 
-use Application\Service\Specification\Specification;
+use Platform\Specification\Specification;
 use Application\Model\Tweet;
 
 class HasLocation implements Specification

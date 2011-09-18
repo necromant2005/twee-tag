@@ -3,7 +3,7 @@
 /** @namespace */
 namespace Application\Model;
 
-use Application\Service\Collection as Collection;
+use Platform\Collection as Collection;
 
 class Map
 {

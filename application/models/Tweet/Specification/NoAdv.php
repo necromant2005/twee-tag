@@ -1,8 +1,8 @@
 <?php
 namespace Application\Model\Tweet\Specification;
 
-use Application\Service\Specification\Specification;
-use Application\Service\Collection\Collection;
+use Platform\Specification\Specification;
+use Platform\Collection\Collection;
 use Application\Model\Tweet;
 
 class NoAdv implements Specification

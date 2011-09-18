@@ -71,33 +71,3 @@ trait Mapping
     }
 }
 
-trait Validators
-{
-    private function _isStringValidator($value)
-    {
-        return is_string($value);
-    }
-}
-
-class A
-{
-    use Mapping, Validators;
-
-    /**
-     * @var string
-     */
-    protected $_name = '';
-
-    /**
-     * @var string
-     */
-    protected $_message = '';
-}
-
-$a = new A();
-$a->setMessage('test');
-var_dump($a->getMessage());
-$a->setName('bill');
-var_dump($a->getName());
-$a->setName((string)123);
-

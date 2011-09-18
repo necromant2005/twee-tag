@@ -5,6 +5,9 @@ namespace Application\Model;
 
 class Location
 {
+    /**
+     * @var float
+     */
     protected $_latitude = null;
     protected $_longitude = null;
 
